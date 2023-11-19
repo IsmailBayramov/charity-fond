@@ -12,10 +12,10 @@
     background: rgb(224, 224, 224);
     padding: 15px;
     text-align: center;
-    /* position: fixed; */
     bottom: 0;
     left: 0;
     right: 0;
+    font-size: calc(.5em + .5vw);
 }
 
 .footer-container a{

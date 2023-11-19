@@ -26,8 +26,8 @@ const incrementCount = (targetCounter) => {
 
 <template>
   <div class="container">
-    <p class="container-title">Актуальные пожертвования</p>
-    <div v-for="counter in counters" :key="counter.name">
+    <p class="container-title">Актуальные пожертвования в Москве</p>
+    <div v-for="(counter, index) in counters" :key="counter.name" :style="{ marginTop: index === 0 ? '10px' : '80px' }">
       <p class="count-text">
         Собрано на {{ counter.name }}: 
         <span class="count-value">{{ counter.count }} &#8381;</span>
@@ -45,9 +45,8 @@ const incrementCount = (targetCounter) => {
 
 <style scoped>
 progress {
-    width: 60%;
-    max-width: 400px;
-    min-width: 150px;
+    width: 70vw;
+    max-width: 350px;
     /* accent-color: rgb(88, 88, 88); */
 }
 
@@ -59,15 +58,16 @@ progress {
   flex-direction: column;
 }
 
-.count-text {
-  margin-top: 100px;
-  margin-bottom: 10px;
-  font-size: calc(1em + 1vw);
+.container-title {
+  padding: 1em 0 0 0;
+  font-weight: 500;
+  font-size: calc(.8em + 1.7vw);
 }
 
-/* .count-text:first-of-type {
-  margin-top: 20px;
-} */
+.count-text {
+  margin-bottom: 10px;
+  font-size: calc(.7em + 1.3vw);
+}
 
 .count-value {
   color: gold;
@@ -80,12 +80,10 @@ progress {
   border: 0;
   margin: 0px 5px 0px 5px;
   cursor: pointer;
-  width: 3vw; /* 5% от ширины видимой области */
-  height: 3vw;
-  min-width: 50px;
-  min-height: 50px;
-  max-width: 90px;
-  max-height: 90px;
+  width: 30vw;
+  height: 30vw;
+  max-width: 50px;
+  max-height: 50px;
 }
 
 .container-button:hover {

@@ -35,9 +35,8 @@ const scrollToTop = () => {
 
 .header-text {
   font-size: calc(1em + 1vw);
-  font-weight: 500;
+  font-weight: 300;
   cursor: pointer;
-  /* font-weight: bold; */
 }
 
 .header-logo {
