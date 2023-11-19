@@ -1,15 +1,10 @@
 <script setup>
 import { ref, reactive } from 'vue';
+import { useFetch } from '@vueuse/core';
 
-const counters = reactive([
-  { name: 'лечение', count: ref(0), max_count: 15000 },
-  { name: 'PlayStation 6', count: ref(0), max_count: 10000 },
-  { name: 'Xbox One X', count: ref(0), max_count: 5000 },
-  { name: 'iPhone 15 Pro Max', count: ref(0), max_count: 10000 },
-  { name: 'дом в Штатах', count: ref(0), max_count: 15000 },
-  { name: 'помощь бездомным', count: ref(0), max_count: 10000 },
-  { name: 'строительство школы', count: ref(0), max_count: 30000 },
-]);
+const url = "http://127.0.0.1:8000/main";
+const { data } = useFetch(url, { refetch: true }).json();
+const counters = reactive(data);
 
 const decrementCount = (targetCounter) => {
   if (targetCounter.count > 0) {
@@ -27,9 +22,9 @@ const incrementCount = (targetCounter) => {
 <template>
   <div class="container">
     <p class="container-title">Актуальные пожертвования в Москве</p>
-    <div v-for="(counter, index) in counters" :key="counter.name" :style="{ marginTop: index === 0 ? '10px' : '80px' }">
+    <div v-for="(counter, index) in counters" :key="counter.title" :style="{ marginTop: index === 0 ? '10px' : '80px' }">
       <p class="count-text">
-        Собрано на {{ counter.name }}: 
+        Собрано на {{ counter.title }}: 
         <span class="count-value">{{ counter.count }} &#8381;</span>
         <br>
         <progress :value="counter.count" :max="counter.max_count"></progress>
